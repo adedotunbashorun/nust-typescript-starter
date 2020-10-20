@@ -10,12 +10,12 @@
 								<div class="logo">
 									<div class="img-logo">
 										<a class="logo" href="index.html">
-											<img class="img-responsive" src="img/logo2.png" alt="logo">
+											<img class="img-responsive" :src="(settings||{}).appLogo" alt="logo">
 										</a>
 									</div>
 								</div>
 								<div class="footer-widget-about-description">
-									<p>Beatae vitae dicta su explicabo nemo enim ipsam voluptatem quia voluptas sitBeatae vitae sitBeatae vitae dicta suntania..</p>
+									<p>{{ (settings||{}).siteDescription }}</p>
 								</div>
 								<div class="social">
 									<!-- Social Icons -->
@@ -48,9 +48,9 @@
 								<h3 class="widget-title">Contact</h3>
 								<p>Beatae vitae dicta sunt explicabo nemo enim ipsam voluptatem</p>
 								<ul class="address-widget-list">
-									<li class="footer-mobile-number"><i class="fa fa-phone"></i>+(600) 125-4985-214</li>
-									<li class="footer-mobile-number"><i class="fa fa-envelope"></i>info@yoursite.com</li>
-									<li class="footer-mobile-number"><i class="fa fa-map-marker"></i>House Building Uttara</li>
+									<li class="footer-mobile-number"><i class="fa fa-phone"></i>{{ (settings||{}).appPhone }}</li>
+									<li class="footer-mobile-number"><i class="fa fa-envelope"></i>{{ (settings||{}).appEmail }}</li>
+									<li class="footer-mobile-number"><i class="fa fa-map-marker"></i>{{ (settings||{}).appTitle }}</li>
 								</ul>
 							</div>
 							<!--/ End Footer Contact -->
@@ -77,7 +77,7 @@
 						<div class="col-12">
 							<div class="copyright-content">
 								<!-- Copyright Text -->
-								<p>© Copyright <a href="#" class="text-white">CoinBase</a>.</p>
+								<p>© Copyright <a href="#" class="text-white">{{ (settings||{}).appTitle }}</a>.</p>
 							</div>
 						</div>
 					</div>
@@ -87,12 +87,9 @@
 		</footer>
 </template>
 <script lang="ts">
-import Vue from 'vue'
+import Vue from 'vue';
+import settings from '~/mixins/settings.ts';
 export default Vue.extend({
-  data: () => {
-    return {
-
-    }
-  }
+  mixins: [settings],
 })
 </script>

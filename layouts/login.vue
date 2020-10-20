@@ -1,12 +1,12 @@
 <template>
   <div class="contain">
     <div class="row">
-        <div class="col-lg-7 col-12 login-base d-none d-sm-block">
+        <div class="col-lg-7 col-sm-12 login-base d-none d-lg-block">
           <div class="pt-5 pl-5 m-auto">
             <h4 class="text-white">Welcome Back!</h4>
           </div>
         </div>
-        <div class="col-lg-5 col-12 mt-5 px-3">
+        <div class="col-lg-5 col-sm-12 col-xs-12 mt-5 px-3">
           <Nuxt />
         </div>
     </div>

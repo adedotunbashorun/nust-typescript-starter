@@ -55,6 +55,20 @@ const settingsGeneralSchema = {
         }
     }
   },
+  "appPhone": {
+    "component": "TextInput",
+    "label": "App Phone",
+    "validations": {
+        "required": {
+            "params": null,
+            "message": "This field is required"
+        },
+        "minLength": {
+          "params": 14,
+          "message": "Please type at least 14 characters"
+        }
+    }
+  },
   "welcomeMessage": {
       "component": "TextArea",
       "label": "Welcome Message",

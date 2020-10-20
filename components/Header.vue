@@ -6,8 +6,8 @@
         <div class="col-lg-8 col-12">
           <!-- Top Contact -->
           <div class="top-contact">
-            <div class="single-contact"><i class="fa fa-phone"></i>Phone: +(234) 903-4268-873</div>
-            <div class="single-contact"><i class="fa fa-envelope-open"></i>Email: info@coinbase.com</div>
+            <div class="single-contact"><i class="fa fa-phone"></i>Phone: {{ (settings||{}).appPhone }}</div>
+            <div class="single-contact"><i class="fa fa-envelope-open"></i>Email: {{(settings||{}).appEmail}}</div>
             <div class="single-contact"><i class="fa fa-clock-o"></i>Opening: 08AM - 09PM</div>
           </div>
           <!-- End Top Contact -->
@@ -51,11 +51,6 @@ import Vue from 'vue';
 import settings from '~/mixins/settings.ts';
 export default Vue.extend({
   mixins: [settings],
-  data: () => {
-    return {
-
-    }
-  },
 })
 </script>
 <style scoped>
