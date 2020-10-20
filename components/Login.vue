@@ -2,7 +2,9 @@
   <div class="col-lg-10 offset-lg-1 col-md-8 offset-md-2 col-sm-8 offset-sm-2">
     <form @submit.prevent="login">
       <img class="rounded mx-auto d-block mb-3 mt-5" :src="(settings||{}).appLogo" alt="Logo" width="72" height="72">
-      <center><h1 class="h3 mb-3 font-weight-normal">Please sign in</h1></center>
+      <center>
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+      </center>
       <DynamicForm
         :schema="schema"
         v-model="form"
