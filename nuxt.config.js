@@ -18,7 +18,8 @@ export default {
 
     // Global CSS (https://go.nuxtjs.dev/config-css)
     css: [
-        '~/assets/main.css'
+        '~/assets/main.css',
+        '~/assets/scss/main.scss'
     ],
 
     // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
@@ -87,14 +88,10 @@ export default {
         strategies: {
             local: {
                 scheme: 'refresh',
-                refreshToken: {
-                    property: 'refreshToken',
-                    data: 'refresh_token',
-                    maxAge: 60 * 60 * 24 * 30
-                },
                 endpoints: {
                     login: { url: 'auth/login', method: 'post', propertyName: 'accessToken' },
-                    user: { url: 'auth/me', method: 'get', propertyName: 'data.user' },
+                    refresh: { url: 'auth/token', method: 'post', propertyName: 'refreshToken' },
+                    user: { url: 'auth/me', method: 'get', propertyName: 'user' },
                     logout: false
                 },
                 tokenRequired: true,

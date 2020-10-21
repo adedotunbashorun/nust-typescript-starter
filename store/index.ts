@@ -88,7 +88,7 @@ export const actions: ActionTree<RootState, RootState> = {
         // check data user login with cookie
         const { data } = await this.$axios.get('/auth/me');
         // server return the data is cookie valid loggedIn is true
-        auth = data.data // set the data auth
+        auth = data // set the data auth
       } catch (err) {
         // No valid cookie found
         auth = null

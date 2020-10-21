@@ -64,6 +64,7 @@ export default Vue.extend({
         this.loading = true;
         try {
           const data = await this.$store.dispatch('storeSettings', formData);
+          this.$store.commit('SETTINGS', formData);
           this.$toast.success('Settings Saved').goAway(2500);
         } catch (error) {
           this.$toast.error(error.message).goAway(2500);
