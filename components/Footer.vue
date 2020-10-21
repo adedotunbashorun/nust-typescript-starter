@@ -90,6 +90,7 @@
 import Vue from 'vue';
 import settings from '~/mixins/settings.ts';
 export default Vue.extend({
+  name: 'Footer',
   mixins: [settings],
 })
 </script>

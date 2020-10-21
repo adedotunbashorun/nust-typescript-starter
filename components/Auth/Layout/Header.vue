@@ -26,6 +26,7 @@ import { mapState } from 'vuex';
 import auth from '~/mixins/auth.ts';
 import settings from '~/mixins/settings.ts';
 export default Vue.extend({
+  name: 'AuthHeader',
   mixins: [auth, settings],
   data: () => {
     return {

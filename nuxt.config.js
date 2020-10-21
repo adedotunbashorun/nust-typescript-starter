@@ -55,7 +55,14 @@ export default {
             fractionSeparator: '.',
             symbolPosition: 'front',
             symbolSpacing: false
-        }]
+        }],
+        [
+            '@nuxtjs/component-cache',
+            {
+                max: 10000,
+                maxAge: 1000 * 60 * 60
+            }
+        ]
     ],
     toast: {
         position: 'top-right',
