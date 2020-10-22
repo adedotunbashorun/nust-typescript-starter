@@ -28,7 +28,7 @@
         "nuxt-socket-io": "^1.1.11",
         "nuxt-validate": "^1.0.1",
         "nuxt-vuex-localstorage": "^1.2.7",
-        "vee-validate": "^3.4.0",
+        "v-runtime-template": "^1.10.0",
         "vue-currency-filter": "^5.2.0",
         "vue-html2pdf": "^1.7.3",
         "vuelidate": "^0.7.5"

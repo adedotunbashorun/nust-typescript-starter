@@ -1,22 +1,28 @@
 <template>
-	<div class="navbar-item">
-    <a @click.prevent="show = !show" :class="{ 'nuxt-link-exact-active': showDrowpDown }" v-if="hasDropdown">
-      <div class="d-flex w-100 justify-content-start align-items-center">
-          <span :class="item.icon"></span>
-          <span class="menu-collapsed">{{ item.title }}</span>
-          <span :class="{'fa fa-angle-down ml-auto':hasDropdown}"></span>
-      </div>
-    </a>
-    <nuxt-link :to="'/'+item.url"  v-else>
-      <div class="d-flex w-100 justify-content-start align-items-center" @click="show = false">
-          <span :class="item.icon"></span>
-          <span class="menu-collapsed">{{ item.title }}</span>
-      </div>
-    </nuxt-link>
-    <!-- Submenu content -->
-    <div v-if="hasDropdown && showDrowpDown">
+	<div>
+    <li @click.prevent="(hasDropdown) ? show = !show : ''" :class="{'nav-item nav-dropdown': hasDropdown, 'nav-item': !hasDropdown}">
+      <nuxt-link :to="(hasDropdown) ? '#' : '/'+item.url"
+        :class="{
+          'nav-link  nav-dropdown-toggle': hasDropdown,
+          'nav-link': !hasDropdown,
+        }">
+        <div class="d-flex justify-content-start align-items-center">
+            <span :class="item.icon"></span>
+            <span class="menu-collapsed">{{ item.title }}</span>
+            <span
+              :class="{
+                'fa fa-angle-left ml-auto': hasDropdown && !showDrowpDown,
+                'fa fa-angle-down ml-auto': showDrowpDown && hasDropdown,
+                '': !hasDropdown
+              }">
+            </span>
+        </div>
+      </nuxt-link>
+    </li>
+      <!-- Submenu content -->
+    <ul v-if="hasDropdown && showDrowpDown">
       <menu-list-item v-for="(child,key) in item.children" :item="child" :key="key"></menu-list-item>
-    </div>
+    </ul>
 	</div>
 </template>
 
@@ -41,16 +47,12 @@ export default Vue.extend({
     },
 })
 </script>
-
-
-<style scoped>
+<style lang="scss" scoped>
 
 .nuxt-link-exact-active {
     text-transform: capitalize;
     display: block;
-    /* padding: 10px 50px 10px 50px; */
-
-    margin: 20px 10px;
+    margin: 5px 0px;
     background-color: #fefefe;
     color: #363434;
     font-weight: 600;
@@ -63,10 +65,16 @@ export default Vue.extend({
 ul.nav, a {
   text-transform: capitalize;
   display: block;
-  margin: 20px 10px;
   color: #fefefe;
   font-weight: 600;
   text-decoration: none;
+  &:hover {
+    background-color: #fefefe;
+    color: #363434;
+    display: block;
+    margin: 5px 0px;
+    font-weight: 600;
+  }
 }
 </style>
 

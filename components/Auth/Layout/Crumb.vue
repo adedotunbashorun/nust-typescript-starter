@@ -1,42 +1,40 @@
 <template>
-  <nav class="top" aria-label="breadcrumb">
-    <ol class="breadcrumb container-fluid">
-      <li class="breadcrumb-item"><nuxt-link to="/admin/dashboard" class="not-active">Home</nuxt-link></li>
-      <li class="breadcrumb-item active" aria-current="page"><nuxt-link to="#">{{ currentPage }}</nuxt-link></li>
-    </ol>
-  </nav>
+  <b-breadcrumb class="top" :items="pages"></b-breadcrumb>
 </template>
 <script lang="ts">
+import { forEach } from 'lodash';
 import Vue from 'vue';
 export default Vue.extend({
   name: 'Crumb',
   props: ['currentPage'],
+  computed: {
+    pages() {
+      const items = this.currentPage.split('-');
+      const data = [
+        {
+          text: 'Home',
+          href: '#'
+        }
+      ]
+      items.forEach((element: any) => {
+        data.push({ text: this.capitalizeFirstLetter(element) , href: '#'});
+      });
+      return data
+    }
+  },
+  methods: {
+    capitalizeFirstLetter(string: string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+  }
 })
 </script>
 <style scoped>
  .top {
-   margin-top: 100px;
- }
- .nuxt-link-exact-active {
-    text-transform: capitalize;
-    display: inline;
-    padding: 0;
-    /* padding: 10px 50px 10px 50px; */
+    margin-top: 6rem;
+  }
+ @media only screen and (max-width: 480px) {
+    .top { margin-top: 10rem; }
+  }
 
-    margin: 0px 0px;
-    background-color: transparent;
-    color: #363434;
-    font-weight: 0;
-}
-.not-active {
-    text-transform: capitalize;
-    display: inline;
-    padding: 0;
-    /* padding: 10px 50px 10px 50px; */
-
-    margin: 0px 0px;
-    background-color: transparent;
-    color: #363434;
-    font-weight: 600;
-}
 </style>

@@ -6,7 +6,7 @@
       <i class="fa fa-bars text-white" target="sidebar-variant" @click="$store.dispatch('toggleSidebar')"></i>
 
       <b-collapse id="nav-collapse" is-nav>
-        <b-navbar-nav class="ml-auto">
+        <b-navbar-nav class="ml-auto d-none d-sm-block">
           <b-nav-item-dropdown right>
             <template v-slot:button-content v-if="authUserName">
               {{authUserName.split(" ").map((n)=>n[0]).join(".")}}<i class="fa fa-user"></i>
@@ -17,6 +17,18 @@
           </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>
+    </b-navbar>
+    <b-navbar class="d-block d-sm-none mt" fixed="top" type="dark" variant="light" align="right">
+      <!-- <b-collapse is-nav> -->
+        <b-nav-item-dropdown right class="d-block">
+          <template v-slot:button-content v-if="authUserName">
+            <span variant="outline-primary">{{authUserName.split(" ").map((n)=>n[0]).join(" ")}}</span>
+          </template>
+          <b-dropdown-item href="#">Account</b-dropdown-item>
+          <b-dropdown-item href="#">Settings</b-dropdown-item>
+          <b-dropdown-item @click="logout()">Sign Out</b-dropdown-item>
+        </b-nav-item-dropdown>
+      <!-- </b-collapse> -->
     </b-navbar>
   </div>
 </template>
@@ -40,3 +52,8 @@ export default Vue.extend({
   }
 })
 </script>
+<style lang="scss">
+.mt {
+  margin-top: 4rem;
+}
+</style>

@@ -1,9 +1,8 @@
 <template>
   <div>
-    <crumb currentPage="Settings" />
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-      <div class="container">
-        <b-card no-body>
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+      <div class="container-fluid">
+        <b-card>
           <b-tabs
             card
             active-nav-item-class="nav nav-pills text-dark"
@@ -26,7 +25,7 @@
               <b-tab title="Payment Settings"><p>I'm a disabled tab!</p></b-tab>
               <b-tab title="Other Settings"><p>I'm a disabled tab!</p></b-tab>
               <div class="row">
-                <div class="col-6 offset-6">
+                <div class="col-lg-6 offset-lg-6 col-md-8 offset-md-4 col-sm-12">
                     <button type="submit" :disabled="loading"
                         class="float-right btn btn-primary btn-lg mb-2 mt-4 mr-4">
                         Save Setting
@@ -87,7 +86,6 @@ export default Vue.extend({
 
   },
   components: {
-    Crumb: () => import('@/components/Auth/Layout/Crumb.vue'),
     DynamicForm: () => import('@/components/Forms/DynamicForm.vue')
   }
 })

@@ -24,6 +24,12 @@ const baseMenuList = [
       }
     ]
   },
+  {
+    "title": "Users",
+    "url": "admin/users",
+    "icon": "fa fa-users fa-fw mr-3",
+    "children":[]
+  },
 ];
 
 

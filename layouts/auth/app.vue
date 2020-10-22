@@ -4,7 +4,8 @@
     <div class="container-fluid">
       <div class="row">
         <main-side-bar v-if="toggle" />
-        <main role="main" :class="(toggle) ? 'content col-md-9 ml-sm-auto col-lg-10 px-md-4 overflow-hidden': 'content col-md-12 ml-sm-auto col-lg-12 px-md-4 overflow-hidden'">
+        <main role="main" :class="(toggle) ? 'content col-xl-10 col-lg-9 col-md-9 ml-sm-auto col-sm-9 col-xs-9 px-md-4 overflow-hidden': 'content col-md-12 ml-sm-auto col-lg-12 px-md-4 overflow-hidden'">
+          <crumb :currentPage="$route.name" />
           <nuxt/>
         </main>
       </div>
@@ -25,7 +26,6 @@ export default Vue.extend({
   async fetch() {
     try {
       const data = await this.$store.dispatch(`fetchSettings`);
-      console.log(data);
     } catch (error) {
       this.$toast.error(error.message).goAway(2500);
     }
@@ -49,6 +49,7 @@ export default Vue.extend({
     MainHeader: () => import('@/components/Auth/Layout/Header.vue'),
     MainFooter: () => import('@/components/Auth/Layout/Footer.vue'),
     MainSideBar: () => import('@/components/Auth/Layout/Sidebar.vue'),
+    Crumb: () => import('@/components/Auth/Layout/Crumb.vue')
   },
 })
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar-sticky pt-3">
     <nav class="mb-3">
-	    <menu-list-item v-for="(item,key) in items" :item="item" :key="key"></menu-list-item>
+	     <menu-list-item v-for="(item,key) in items" :item="item" :key="key"></menu-list-item>
     </nav>
     <h6
       class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted"

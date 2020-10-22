@@ -57,6 +57,7 @@ export const mutations: MutationTree<RootState> = {
 
   ERROR(state, payload) {
     state.error = payload;
+    console.log(payload);
   }
 }
 
@@ -77,10 +78,11 @@ export const actions: ActionTree<RootState, RootState> = {
       commit('SETTINGS', data);
       return data;
     } catch (error) {
+      console.log(error);
       commit('ERROR', error)
     }
   },
-  async nuxtServerInit ({ commit }, { req }) {
+  async nuxtServerInit ({ commit }, { req, error }) {
     let auth = null
     if (req && req.headers && req.headers.cookie) {
       // cookie found
@@ -90,13 +92,13 @@ export const actions: ActionTree<RootState, RootState> = {
         // server return the data is cookie valid loggedIn is true
         auth = data // set the data auth
       } catch (err) {
+        console.log(err);
         // No valid cookie found
         auth = null
       }
     }
     commit('SET_AUTH', auth) // set state auth
   },
-
   toggleSidebar({ commit }) {
     commit('TOGGLE_SIDEBAR');
   },
